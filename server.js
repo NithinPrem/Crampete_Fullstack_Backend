@@ -1,6 +1,3 @@
-// if (process.env.NODE_ENV !== "production") {
-// 	require("dotenv").config({ path: __dirname + "/.env" });
-// }
 const express = require("express");
 const app = express();
 const axios = require("axios").default;
@@ -17,8 +14,6 @@ const update = require("../backend/routes/update");
 const path = require("path");
 
 const port = process.env.PORT || 8000;
-
-// static files (build of your frontend)
 
 app.use("/api", signIn);
 app.use("/api", signUp);

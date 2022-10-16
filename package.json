@@ -1,6 +1,10 @@
 {
 	"name": "backend",
 	"version": "0.1.0",
+	"main": "server.js",
+	"engines": {
+		"node": "16.x"
+	},
 	"private": true,
 	"dependencies": {
 		"axios": "^0.27.2",
@@ -13,6 +17,6 @@
 		"mongoose": "^6.5.2"
 	},
 	"scripts": {
-		"start": "nodemon server.js"
+		"start": "node server.js"
 	}
 }
