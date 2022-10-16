@@ -6,7 +6,11 @@ require("../backend/database.js");
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 const cors = require("cors");
-app.use(cors());
+app.use(
+	cors({
+		origin: "https://randomnp.vercel.app",
+	})
+);
 const signIn = require("../backend/routes/signIn");
 const signUp = require("../backend/routes/signUp");
 const deleted = require("../backend/routes/delete");
