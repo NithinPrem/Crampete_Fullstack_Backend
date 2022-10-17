@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 const cors = require("cors");
 app.use(
 	cors({
-		origin: "https://randomnp.vercel.app",
+		origin: "https://randomnp.vercel.app/api",
 	})
 );
 const signIn = require("../backend/routes/signIn");
