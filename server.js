@@ -8,9 +8,13 @@ app.use(bodyParser.json());
 const cors = require("cors");
 app.use(
 	cors({
-		origin: "https://randomnp.vercel.app/*",
+		origin: "https://randomnp.vercel.app/",
+		Methods: ["GET", "POST"],
+		allowedHeaders: ["Content-Type"],
 	})
 );
+app.options("*", cors());
+
 const signIn = require("../backend/routes/signIn");
 const signUp = require("../backend/routes/signUp");
 const deleted = require("../backend/routes/delete");
