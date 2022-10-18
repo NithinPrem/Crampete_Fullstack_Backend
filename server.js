@@ -6,19 +6,15 @@ require("./database");
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 const cors = require("cors");
-app.use(
-	cors({
-		origin: "https://randomnp.vercel.app",
-	})
-);
+app.use(cors());
 
-// app.use((req, res, next) => {
-// 	res.header(
-// 		"Access-Control-Allow-Origin",
-// 		"https://randomnp.vercel.app"
-// 	);
-// 	next();
-// });
+app.use((req, res, next) => {
+	res.header(
+		"Access-Control-Allow-Origin",
+		"https://randomnp.vercel.app"
+	);
+	next();
+});
 
 const signIn = require("./routes/signIn");
 const signUp = require("./routes/signUp");
