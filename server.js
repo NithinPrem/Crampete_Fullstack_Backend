@@ -20,11 +20,10 @@ app.use(
 // 	next();
 // });
 
-const signIn = require("../backend/routes/signIn");
-const signUp = require("../backend/routes/signUp");
-const deleted = require("../backend/routes/delete");
-const update = require("../backend/routes/update");
-const path = require("path");
+const signIn = require("./routes/signIn");
+const signUp = require("./routes/signUp");
+const deleted = require("./routes/delete");
+const update = require("./routes/update");
 
 const port = process.env.PORT || 8000;
 
