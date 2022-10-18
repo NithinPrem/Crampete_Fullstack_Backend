@@ -2,18 +2,23 @@ const express = require("express");
 const app = express();
 const axios = require("axios").default;
 require("dotenv").config();
-require("../backend/database.js");
+require("./database");
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 const cors = require("cors");
 app.use(
 	cors({
 		origin: "https://randomnp.vercel.app",
-		Methods: ["GET", "POST"],
-		allowedHeaders: ["Content-Type"],
 	})
 );
-app.options("*", cors());
+
+// app.use((req, res, next) => {
+// 	res.header(
+// 		"Access-Control-Allow-Origin",
+// 		"https://randomnp.vercel.app"
+// 	);
+// 	next();
+// });
 
 const signIn = require("../backend/routes/signIn");
 const signUp = require("../backend/routes/signUp");
@@ -27,24 +32,6 @@ app.use("/api", signIn);
 app.use("/api", signUp);
 app.use("/api", deleted);
 app.use("/api", update);
-
-if (process.env.NODE_ENV === "production") {
-	app.use(
-		express.static(
-			path.join(__dirname, "../frontend", "build")
-		)
-	);
-	app.get("/*", (req, res) => {
-		res.sendFile(
-			path.join(
-				__dirname,
-				"../frontend",
-				"build",
-				"index.html"
-			)
-		);
-	});
-}
 
 // API Calls for Quotable, NewsAPI, TMDB MOVIES & YouTube Respectively for News Rerouted from the frontend to the backend.
 
