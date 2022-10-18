@@ -11,7 +11,7 @@ app.use(cors());
 app.use((req, res, next) => {
 	res.header(
 		"Access-Control-Allow-Origin",
-		"https://randomnp.vercel.app"
+		"https://randomnp.vercel.app/api"
 	);
 	next();
 });
