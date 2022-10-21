@@ -9,9 +9,10 @@ const cors = require("cors");
 app.use(cors());
 
 app.use((req, res, next) => {
-	res.header(
+	res.setHeader(
 		"Access-Control-Allow-Origin",
-		"https://randomnp.vercel.app/api"
+		"https://randomnp.vercel.app"
+		// "http://localhost:3000"
 	);
 	next();
 });
@@ -98,5 +99,7 @@ app.get("/api/youtubeSearch", async (req, res) => {
 });
 
 app.listen(port, () => {
-	console.log(`Server Started on ${process.env.PORT}`);
+	console.log(
+		`Server Started on PORT : ${process.env.PORT}`
+	);
 });
