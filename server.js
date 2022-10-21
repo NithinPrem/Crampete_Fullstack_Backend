@@ -13,23 +13,14 @@ app.use(
 	})
 );
 
-// app.use((req, res, next) => {
-// 	res.setHeader(
-// 		"Access-Control-Allow-Origin",
-// 		"https://randomnp.vercel.app"
-// 		// "http://localhost:3000"
-// 	);
-// 	next();
-// });
-
-const signIn = require("./routes/signIn");
+const login = require("./routes/login");
 const signUp = require("./routes/signUp");
 const deleted = require("./routes/delete");
 const update = require("./routes/update");
 
 const port = process.env.PORT || 8000;
 
-app.use("/api", signIn);
+app.use("/api", login);
 app.use("/api", signUp);
 app.use("/api", deleted);
 app.use("/api", update);
