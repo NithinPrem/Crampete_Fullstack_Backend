@@ -6,16 +6,21 @@ require("./database");
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 const cors = require("cors");
-app.use(cors());
+app.use(
+	cors({
+		origin: "https://randomnp.vercel.app",
+		methods: ["GET", "POST"],
+	})
+);
 
-app.use((req, res, next) => {
-	res.setHeader(
-		"Access-Control-Allow-Origin",
-		"https://randomnp.vercel.app"
-		// "http://localhost:3000"
-	);
-	next();
-});
+// app.use((req, res, next) => {
+// 	res.setHeader(
+// 		"Access-Control-Allow-Origin",
+// 		"https://randomnp.vercel.app"
+// 		// "http://localhost:3000"
+// 	);
+// 	next();
+// });
 
 const signIn = require("./routes/signIn");
 const signUp = require("./routes/signUp");
