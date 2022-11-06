@@ -18,6 +18,7 @@
 		"mongoose": "^6.5.2"
 	},
 	"scripts": {
-		"start": "node server.js"
+		"start": "node server.js",
+		"dev": "nodemon server.js"
 	}
 }
