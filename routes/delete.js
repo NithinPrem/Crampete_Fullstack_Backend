@@ -8,10 +8,7 @@ router.post("/deleteUser", async (req, res) => {
 	const clientToken = body.token;
 
 	try {
-		const VerifiedToken = jwt.verify(
-			clientToken,
-			"process.env.JWT_SECRET_KEY"
-		);
+		const VerifiedToken = jwt.verify(clientToken, process.env.JWT_SECRET_KEY);
 
 		const userToBeDeleted = await user.findOneAndDelete({
 			email: VerifiedToken,
@@ -23,9 +20,7 @@ router.post("/deleteUser", async (req, res) => {
 				status: true,
 			});
 		} else {
-			res
-				.status(404)
-				.json({ msg: "Network Error!!!!", status: false });
+			res.status(404).json({ msg: "Network Error!!!!", status: false });
 		}
 	} catch (e) {
 		res.status(401).json({

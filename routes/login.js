@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const user = require("../database");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 router.post("/login", async (req, res) => {
@@ -12,23 +12,16 @@ router.post("/login", async (req, res) => {
 	});
 
 	if (userDetails) {
-		const dbPassword = await bcrypt.compare(
-			body.password,
-			userDetails.password
-		);
+		const dbPassword = await bcrypt.compare(body.password, userDetails.password);
 
 		if (dbPassword) {
-			const jwtToken = jwt.sign(
-				body.email,
-				"process.env.JWT_SECRET_KEY"
-			);
+			const jwtToken = jwt.sign(body.email, process.env.JWT_SECRET_KEY);
 
 			res.status(200).json({
 				msg: "Logged In Successfully",
 				user: {
 					firstName: userDetails.firstName,
 					lastName: userDetails.lastName,
-					userName: userDetails.userName,
 					email: userDetails.email,
 					status: true,
 					token: jwtToken,

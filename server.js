@@ -15,7 +15,7 @@ app.use(
 	cors({
 		origin: "https://randomnp.vercel.app",
 		methods: ["GET", "POST"],
-	})
+	}),
 );
 
 const login = require("./routes/login");
@@ -43,7 +43,5 @@ app.use("/api", movieSearch);
 app.use("/api", newsSearch);
 
 app.listen(port, () => {
-	console.log(
-		`Server Started on PORT : ${process.env.PORT}`
-	);
+	console.log(`Server Started on PORT : ${process.env.PORT}`);
 });
